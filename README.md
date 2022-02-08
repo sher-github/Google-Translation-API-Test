@@ -9,13 +9,13 @@ https://cloud.google.com/translate/docs/setup?utm_source=youtube&utm_medium=unpa
 
 ## Test 1
 
-
+測試語言轉換是否成功。<br />
 
 1. Upload "test1.json"<br />
->{
->  "q": "I live in Taiwan.",
->  "source": "en",
->  "target": "zh-tw",
->  "format": "text"
->}
+>{<br />
+>  "q": "I live in Taiwan.",<br />
+>  "source": "en",<br />
+>  "target": "zh-tw",<br />
+>  "format": "text"<br />
+>}<br />
 
