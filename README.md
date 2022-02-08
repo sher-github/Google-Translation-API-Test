@@ -174,3 +174,46 @@ accept-ranges: none
 ## Test 3
 
 是否成功使用get<br />
+
+```
+curl -X GET \
+-H "Authorization: Bearer "$(gcloud auth application-default print-access-token) \
+-i \
+https://translation.googleapis.com/language/translate/v2/languages
+```
+
+```
+HTTP/2 200 
+content-type: application/json; charset=UTF-8
+vary: X-Origin
+vary: Referer
+vary: Origin,Accept-Encoding
+date: Tue, 08 Feb 2022 08:37:12 GMT
+server: ESF
+cache-control: private
+x-xss-protection: 0
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+accept-ranges: none
+
+{
+  "data": {
+    "languages": [
+      {
+        "language": "af"
+      },
+      {
+        "language": "am"
+      },
+      {
+        "language": "ar"
+      },
+      {
+        "language": "az"
+      },
+      {
+        "language": "be"
+      },
+...
+```
