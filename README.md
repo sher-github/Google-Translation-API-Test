@@ -1,6 +1,17 @@
 # Google-Translation-API-Test
 
-## 驗證
+## Description
+測試 google translation API
+
+## Test Case
+| ID  | 題目 | 預期結果  | 實際結果 | 
+| --- | --- | --- | --- |
+| 1-1  | 輸入指示英文轉換繁體中文，語言轉換是否成功 | 成功，回傳200 | Pass | 
+| 1-2  | 輸入的其中一欄沒有填寫，語言轉換是否成功  | 不成功，回傳400 | Pass | 
+| 2  | 同時輸入多種語言，是否成功偵測語言 | 成功，回傳200 | Pass | 
+| 3  | 是否成功取得所有語言編號 | 成功，回傳200 | Pass | 
+
+## Verification
 1. Creating service accounts and keys<br />
 https://cloud.google.com/translate/docs/setup?utm_source=youtube&utm_medium=unpaidsocial&utm_campaign=ram-20190917-Translation-API-Quickstart#creating_service_accounts_and_keys
 
@@ -8,10 +19,7 @@ https://cloud.google.com/translate/docs/setup?utm_source=youtube&utm_medium=unpa
 > $export GOOGLE_APPLICATION_CREDENTIALS="KEY_PATH"
 
 ## Test 1-1
-
-測試語言轉換是否成功。<br />
-
-1. Upload "test1.json"<br />
+1. Upload "test1-1.json"<br />
 ```
 {
   "q": "I live in Taiwan.",
@@ -21,12 +29,12 @@ https://cloud.google.com/translate/docs/setup?utm_source=youtube&utm_medium=unpa
 }
 ```
 
-2. POST<br />
+2. POST API<br />
 ```
 curl -X POST \
 -H "Authorization: Bearer "$(gcloud auth application-default print-access-token) \
 -H "Content-Type: application/json" \
---data @test1.json \
+--data @test1-1.json \
 -i \
 "https://translation.googleapis.com/language/translate/v2"
 ```
@@ -60,9 +68,7 @@ accept-ranges: none
 
 ## Test 1-2
 
-測試語言轉換是否成功。<br />
-
-其中一欄沒有資料<br />
+1. Upload "test1-2.json"
 ```
 {
   "q": "I live in Taiwan.",
@@ -70,6 +76,16 @@ accept-ranges: none
   "target": "",
   "format": "text"
 }
+```
+
+2. POST API<br />
+```
+curl -X POST \
+-H "Authorization: Bearer "$(gcloud auth application-default print-access-token) \
+-H "Content-Type: application/json" \
+--data @test1-2.json \
+-i \
+"https://translation.googleapis.com/language/translate/v2"
 ```
 
 Result:<br />
@@ -102,10 +118,7 @@ accept-ranges: none
   }
 }
 ```
-## Test 2-1
-
-測試是否成功偵測語言。<br />
-
+## Test 2
 1. Upload "test2.json"<br />
 ```
 {
@@ -117,7 +130,7 @@ accept-ranges: none
 }
 ```
 
-2. POST<br />
+2. POST API<br />
 ```
 curl -X POST \
 -H "Authorization: Bearer "$(gcloud auth application-default print-access-token) \
@@ -172,9 +185,7 @@ accept-ranges: none
 }
 ```
 ## Test 3
-
-是否成功使用get<br />
-
+1. GET API<br />
 ```
 curl -X GET \
 -H "Authorization: Bearer "$(gcloud auth application-default print-access-token) \
@@ -182,6 +193,7 @@ curl -X GET \
 https://translation.googleapis.com/language/translate/v2/languages
 ```
 
+Result:<br />
 ```
 HTTP/2 200 
 content-type: application/json; charset=UTF-8
